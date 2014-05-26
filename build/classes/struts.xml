@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 把扩展名配置为action -->
+	<constant name="struts.action.extension" value="action"></constant>
+	<!-- 把主题配置为action -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+
+	<package name="default" namespace="/" extends="json-default">
+	
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<!-- 声明 -->
+			<interceptor name="checkPrivilege" class="com.tms.util.CheckPrivilegeInterceptor"></interceptor>
+			
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="checkPrivilege"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	
+	
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+	
+		
+		<!-- 配置全局的Rusult -->
+		<global-results>
+			<result name="loginUI">/WEB-INF/jsp/user/loginUI.jsp</result>
+			<result name="noPrivilegeError">/noPrivilegeError.jsp</result>
+		</global-results>
+	
+		<!-- 配置测试action -->
+		<action name="test" class="testAction">
+			<result name="success">/test.jsp</result>
+		</action>
+		
+		<!-- 首页 -->
+		<action name="home_*" class="homeAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/home/{1}.jsp</result>
+		</action>
+				
+		<!-- 角色管理 表示第一个*号匹配的结果-->
+		<action name="role_*" class="roleAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/role/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/role/saveUI.jsp</result>	
+			<result name="setPrivilegeUI">/WEB-INF/jsp/role/setPrivilegeUI.jsp</result>				
+			<result name="toList" type="redirectAction">role_list</result>
+		</action>
+		
+		<!-- 用户管理 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/user/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/user/saveUI.jsp</result>				
+			<result name="toList" type="redirectAction">user_list</result>
+		
+
+			<result name="logout">/WEB-INF/jsp/user/logout.jsp</result>	
+			<result name="toIndex" type="redirectAction">home_index</result>					
+		</action>
+		
+		
+		<!-- 科目管理 -->
+		<action name="subject_*" class="subjectAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/subject/list.jsp</result>   
+			<result name="saveUI">/WEB-INF/jsp/subject/saveUI.jsp</result>											
+			<result name="toList" type="redirectAction">subject_list</result>
+		</action>
+
+		<!-- 章节管理 -->
+		<action name="chapter_*" class="chapterAction" method="{1}">	
+			<result name="list">/WEB-INF/jsp/chapter/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/chapter/saveUI.jsp</result>										
+			<result name="toList" type="redirectAction">chapter_list</result>
+		</action>
+		
+		<!-- 小节管理 -->
+		<action name="section_*" class="sectionAction" method="{1}">
+			<result name="saveUI">/WEB-INF/jsp/section/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">chapter_list</result>
+		</action>
+		
+		<!-- 知识点管理 -->
+		<action name="know_*" class="knowAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/know/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/know/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">know_list</result>
+		</action>
+		
+		<!-- 试题管理 -->
+		<action name="test_*" class="testorAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/test/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/test/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">test_list</result>
+		</action>
+		
+		<!-- 试卷管理 -->
+		<action name="paper_*" class="paperAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/paper/list.jsp</result>
+			<result name="set">/WEB-INF/jsp/paper/setParams.jsp</result>
+			<result name="test">/WEB-INF/jsp/paper/test.jsp</result>
+			<result name="toList" type="redirectAction">paper_list</result>
+		</action>
+		
+	</package>
+
+
+
+
+
+
+
+
+
+</struts>

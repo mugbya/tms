@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+	<!-- 指定类跟相应表的映射关系 -->
+	<class name="com.tms.entity.chapter.Chapter" table="chapter">
+	 		
+		<!-- 指定主键字段跟属性映射关系-->
+		<id name="id"  type="integer" >					
+			<generator class="native" />
+		</id>
+		
+		
+		<!-- 指定非主键字段跟属性的映射关系-->
+		<property name="name" column="name" type="string"></property>
+
+		
+		<!-- 描述subject关联属性，采用多对一的关系加载相关的Subject信息 -->
+		<many-to-one name="subject" class="com.tms.entity.subject.Subject" column="subjectId"></many-to-one>
+
+		<!-- 描述sections属性，本类与Section一对多的关系 -->
+		<set name="sections" cascade="delete">
+			<key column="chapterId"></key>
+			<one-to-many class="com.tms.entity.section.Section" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

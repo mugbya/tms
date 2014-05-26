@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+	<!-- 开启组件扫描 -->
+	<context:component-scan base-package="test,com.tms" />
+
+	<!-- 定义连接池对象 -->
+	<bean id="c3p0DS" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="root"></property>
+		<property name="password" value="123456"></property>
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/tms?useUnicode=true&amp;characterEncoding=utf-8">
+		</property>
+	</bean>
+
+	<!-- 定义SessionFactory对象 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- dataSource连接池 -->
+		<property name="dataSource" ref="c3p0DS"></property>
+		<!-- 框架参数 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+
+						
+		<!-- hbm.xml参数 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/tms/entity/role/Role.hbm.xml</value>
+				<value>com/tms/entity/user/User.hbm.xml</value>
+				<value>com/tms/entity/privilege/Privilege.hbm.xml</value>	
+			
+				<value>com/tms/entity/subject/Subject.hbm.xml</value>
+				<value>com/tms/entity/chapter/Chapter.hbm.xml</value>	
+				<value>com/tms/entity/section/Section.hbm.xml</value>	
+								
+				<value>com/tms/entity/know/Know.hbm.xml</value>
+				<value>com/tms/entity/test/Test.hbm.xml</value>
+				<value>com/tms/entity/test/Choices.hbm.xml</value>
+				
+				<value>com/tms/entity/paper/Paper.hbm.xml</value>				
+<!-- 
+
+				<value>com/tms/entity/subject/Subject.hbm.xml</value>
+				<value>com/tms/entity/chapter/Chapter.hbm.xml</value>	
+				<value>com/tms/entity/section/Section.hbm.xml</value>	
+ -->			
+				
+			</list>
+		</property>
+	</bean>
+
+	<!-- Spring声明式事务管理 -->
+	<!-- 定义管理事务的方面组件 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 开启事务的注解配置 -->
+	<tx:annotation-driven 
+		transaction-manager="txManager" />
+	<!-- 只需要在目标组件定义中使用@Transactional标记即可 -->
+
+</beans>

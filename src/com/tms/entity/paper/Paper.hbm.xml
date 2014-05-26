@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+	<!-- 指定类跟相应表的映射关系 -->
+	<class name="com.tms.entity.paper.Paper" table="paper">
+	 		
+		<!-- 指定主键字段跟属性映射关系-->
+		<id name="id"  type="integer" >					
+			<generator class="native" />
+		</id>
+		
+		
+		<!-- 指定非主键字段跟属性的映射关系-->
+		<property name="name" column="name" type="string"></property>
+		<property name="time" column="time" type="integer"></property>
+		<property name="subject" column="subject" type="string"></property>		
+		<property name="score" column="score" type="integer"></property>	
+		<property name="single_score" column="single_score" type="integer"></property>
+		<property name="check_srore" column="check_srore" type="integer"></property>
+		<property name="judge_score" column="judge_score" type="integer"></property>
+		<property name="blank_score" column="blank_score" type="integer"></property>				
+				
+								
+		<!-- 描述tests关联属性，采用对对多的关系加载相关的Test信息 -->
+		<set name="tests" table="test_paper">
+			<key column="paperId"></key>
+			<many-to-many class="com.tms.entity.test.Test" column="testId"></many-to-many>
+		</set>
+
+
+
+	</class>
+</hibernate-mapping>

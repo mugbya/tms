@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+	<!-- 指定类跟相应表的映射关系 -->
+	<class name="com.tms.entity.test.Test" table="test">
+	 		
+		<!-- 指定主键字段跟属性映射关系-->
+		<id name="id"  type="integer" >					
+			<generator class="native" />
+		</id>
+		
+		
+		<!-- 指定非主键字段跟属性的映射关系-->
+		<property name="answer" column="answer" type="string"></property>
+		<property name="question" column="question" type="string"></property>		
+		<property name="type" column="type" type="integer"></property>
+		<property name="score" column="score" type="integer"></property>				
+		<property name="difficulty" column="difficulty" type="integer"></property>
+		<property name="testName" column="testName" type="string"> </property>
+		<property name="orderly" column="orderly" type="true_false"></property>
+		<property name="repeat" column="t_repeat" type="true_false"></property>		
+		<property name="status" column="status" type="true_false"></property>		
+
+		<!-- 描述knows属性，本类与Know多对多的关系 -->
+		<set name="knows" table="test_know">
+			<key column="testId"></key>
+			<many-to-many class="com.tms.entity.know.Know" column="knowId"></many-to-many>
+		</set>
+		
+		<!-- 描述choices属性，本类与Choices一对多的关系 -->
+		<set name="choices" cascade="delete">
+			<key column="testID"></key>
+			<one-to-many class="com.tms.entity.test.Choices" />
+		</set>
+	
+		<!-- 描述papers属性，本类与Paper对多对关系  -->
+		<set name="papers" table="test_paper">
+			<key column="testId"></key>
+			<many-to-many class="com.tms.entity.paper.Paper" column="paperId" ></many-to-many>
+		</set>
+		
+		<!-- 描述chapter属性，本类与Chapter多对一关系 -->
+		<many-to-one name="chapter" class="com.tms.entity.chapter.Chapter" column="chapterId"></many-to-one>
+		
+		
+	</class>
+</hibernate-mapping>

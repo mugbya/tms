@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-size: ;
+	margin: 0 auto;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+p {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+a{ text-decoration:none}
+img{border:0;}
+ul,li{list-style:none;}
+h1,h2,h3,h4,h5,h6,ul,dl,dt,dd,from,ol{margin:0;padding:0;}
+#box2{width:1365px;margin:0 auto}
+.head{width:1365px;height:74px;}
+
+
+
+
+
+/* exam_page_1 */
+.title2{width:1365px;height:109px;background:url(../../images/exam/title2.jpg);}
+.title2 h1{font-size:30px;text-align:center;padding-top:30px;color:#38abc7;}
+.title2 h1 span{font-size:14px;font-family:"宋体";padding-top:10px;}
+.exam{width:1075px;/*background:url(../../images/exam/bj.jpg)*/background:url(../../images/exam/bj2.jpg); repeat;padding-left:290px;padding-top:10px}
+span{font-size:14px;color:#333;font-family:"宋体";}
+h1{font-size:20px;color:#333;font-family:"黑体";}
+.p2{font-size:14px;color:#333;font-family:"宋体";line-height:25px;padding-left:20px;padding-top:10px;width:800px;}
+.danxuan{font-size:14px;color:#000;font-family:"宋体";}
+.li{font-size:14px;color:#000;font-family:"宋体";line-height:20px;padding-left:40px}
+.exam2{width:1075px;background:url(../../images/exam/bj2.jpg) repeat;padding-left:290px;padding-top:15px}
+
+.anniu{width:1365px;height:190px;background:url(../../images/exam/bj3.jpg) no-repeat;padding-left:00px;padding-top:0px}
+#link{ width:380px; height:30px; line-height:50px; border:0px #666 solid; margin:0 auto; padding-top:30px;}
+#link a {display:block; width:25px; height:25px; line-height:25px; float:left; color:#000; text-decoration:none; font-weight:normal; font-size:14px; border:1px #CCC solid; text-align:center; margin-left:5px;}
+.button2 .button2{width:160px;height:42px;background:url(../../images/exam/button2.png);border:none;font-size:14px;font-family:"宋体";color:#fff;line-height:42px;margin-top:65px;cursor:pointer;}
+.fotter{width:1365;height:44px;background:#036F89;}
+.fotter p{text-align:center;line-height:44px;color:#FFF;font-size:14px;font-family:"宋体";font-weight:700}
+
+/* exam_result*/
+#main3{width:1365px;height:500px;background:url(../../images/exam/sss.png) no-repeat;background-position:center;}
+#main3 .p1{padding-top:250px;color:#555;font-size:18px;font-family:"微软雅黑";line-height:28px;text-align:center;margin-bottom:20px;font-family:"宋体";font-size:14px;}
+#main3 .button3{width:91px;height:35px;background:url(../../images/exam/button3.png) no-repeat;border:0;margin:0 631px;color:#555;cursor:pointer;}
+
+
+
+
+
+/* exam_pre_prompt*/
+.title{width:1365px;height:109px;background:url(../../images/exam/title2.jpg);}
+.title h1{font-size:30px;text-align:center;line-height:109px;color:#38abc7;}
+.word{width:1055px;height:276px;background:url(../../images/exam/bj6.jpg);padding-left:310px;padding-top:50px;}
+.word ul{float:left;padding-left:40px;}
+.word.ul2{float:left;}
+.word ul li{line-height:34px;list-style-type:decimal;font-size:16px;color:#555;font-family:"黑体";font-weight:0;list-style:none} 
+.word .ul2 li{line-height:34px;list-style-type:decimal;font-size:16px;color:#555;font-family:"黑体";font-weight:0;list-style:none}
+.anniu2{width:1365px;height:113px;background:url(../../images/exam/w3.jpg);}
+.anniu2 .button2{width:160px;height:42px;background:url(../../images/exam/button1.png);border:none;font-size:14px;font-family:"宋体";color:#fff;cursor:pointer;margin-top:50px;}
+
+
+/* text2 */
+.title{width:1365px;height:109px;}
+.top{width:1365px;/*background:url(../../images/exam/bj4.jpg)*/background:url(../../images/exam/bj2.jpg);}
+#ti1{ margin:0 auto; text-align:left; width:800px; height:40px;line-height:40px;padding-top:10px;}
+#ti1 span{ font-size:14px; font-weight:normal;}
+#ti2{ margin:0 auto; text-align:left; width:800px; height:40px; padding-top:50px;line-height:40px;}
+#ti2 span{ font-size:14px; font-weight:normal;}
+#timu{ margin:0 auto; text-align:left; width:750px; line-height:30px; border:0px #666 solid; font-size:14px; white-space:normal; font-weight:normal;color: #333333;font-family: "宋体";}
+#tumu3{ margin:0 auto; text-align:left; width:700px;  border:0px #666 solid; padding-bottom: 8px;}/*height:270px;*/
+#daan{ margin:0 auto; text-align:right; width:700px; height:30px; line-height:30px; border:0px #666 solid; font-size:14px; white-space:normal; font-weight:normal; margin-top:0px;}
+.bottom{width:1365px;background:url(../../images/exam/bj5.jpg);padding-top:30px;}
+.anniu{width:1365px;height:190px;background:url(../../images/exam/bj3.jpg)no-repeat;padding-left:00px;padding-top:0px}
+#link{ width:380px; height:30px; line-height:50px; border:0px #666 solid; margin:0 auto; padding-top:30px;}
+#link a {display:block; width:25px; height:25px; line-height:25px; float:left; color:#000; text-decoration:none; font-weight:normal; font-size:14px; border:1px #CCC solid; text-align:center; margin-left:5px;}
+.button2 .button2{width:160px;height:42px;background:url(../../images/exam/button2.png);border:none;font-size:14px;font-family:"宋体";color:#fff;line-height:42px;margin-top:65px;cursor:pointer;}
+.fotter{width:1365px;height:44px;background:#036F89;}
+.fotter p{text-align:center;line-height:44px;color:#FFF;font-size:14px;font-family:"宋体";font-weight:700}
+.saveButton input{background: url("../../images/exam/button5.png") no-repeat;cursor: pointer;height:28px;width:73px;border:0 none;}
+.saveButton input:hover {background: url("../../images/exam/button4.png") no-repeat;cursor: pointer;height:28px;width:73px;border:0 none;}
+.resultheader{width:1365px;height:74px;background:#01b1d8;}
+.resultheader p{text-align:center;line-height:74px;color:#FFF;font-size:28px;font-family:"宋体";font-weight:700}
+
+
+
+
